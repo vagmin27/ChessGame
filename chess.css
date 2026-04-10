@@ -1,75 +1,112 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
     display: grid;
     place-items: center;
-    overflow-x: hidden;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1e1e2f, #2c2c54);
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
 }
 
 h1 {
     margin: 10px;
 }
 
+#tog {
+    margin: 15px 0;
+    padding: 10px 25px;
+    border-radius: 30px;
+    background: #00ffcc;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+}
+
 ul {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(8, 75px);
+    grid-template-rows: repeat(8, 75px);
+    border: 5px solid #222;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 25px rgba(0,0,0,0.7);
 }
 
 .divv {
-    display: flex;
-}
-
-li {
-    list-style: none;
-    display: grid;
-    place-items: center;
-    font-size: 0px;
+    display: contents;
 }
 
 .box {
-    margin: .5px;
     width: 75px;
     height: 75px;
-}
 
-#tog {
-    margin: 10px 0px;
-}
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-
-.allimg {
-    width: 45px;
     position: relative;
-    bottom: 5px;
+    overflow: hidden;
+    font-size: 0;
+}
+
+ul .box:nth-child(odd) {
+    background: #f0d9b5;
+}
+
+ul .box:nth-child(even) {
+    background: #b58863;
+}
+
+/* 🖼 Piece Images */
+.allimg {
+    width: 60%;
+    height: auto;
+
+    object-fit: contain;
+
+    pointer-events: none;
+    user-select: none;
+
+    transition: transform 0.2s ease;
 }
 
 .allpawn {
-    transform: scale(.7);
+    transform: scale(0.85);
 }
 
-.authcont {
-    width: 100vw;
+.box:hover .allimg {
+    transform: scale(1.1);
 }
 
-.author {
-    float: right;
-    margin-right: 50px;
-
+.box.active {
+    outline: 3px solid #00ffcc;
 }
 
-@media (max-width:650px){
-    #tog {
-        margin-bottom: 70px;
+.box.possible {
+    background: radial-gradient(circle, #00ffcc 25%, transparent 26%);
+}
 
+.box.capture {
+    background: radial-gradient(circle, red 25%, transparent 26%);
+}
+
+@media (max-width: 650px) {
+    ul {
+        grid-template-columns: repeat(8, 11vw);
+        grid-template-rows: repeat(8, 11vw);
     }
+
     .box {
         width: 11vw;
         height: 11vw;
     }
+
     .allimg {
-        width: 7vw;
+        width: 70%;
     }
 }
