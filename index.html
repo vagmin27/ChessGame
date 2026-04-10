@@ -8,11 +8,40 @@
     <title>Chess</title>
 </head>
 <body>
+
     <h1>Chess</h1>
     <h2 id="tog">White's Turn</h2>
+
+    <!-- Winner Text -->
+    <h2 id="winner" style="color: green;"></h2>
+
+    <!-- Game Over Popup -->
+    <div id="gameOverPopup" style="
+        display:none;
+        position:fixed;
+        top:50%;
+        left:50%;
+        transform:translate(-50%, -50%);
+        background:white;
+        padding:30px;
+        border-radius:10px;
+        box-shadow:0 0 20px rgba(0,0,0,0.5);
+        text-align:center;
+        z-index:1000;
+    ">
+        <h1 id="gameOverText"></h1>
+        <button onclick="restartGame()" style="
+            padding:10px 20px;
+            font-size:16px;
+            cursor:pointer;
+            margin-top:10px;
+        ">
+            Restart Game
+        </button>
+    </div>
+
     <ul>
         <!-- Black Chessman -->
-        <!-- here ids are given as row no + col no-->
         <div class="divv" id="row8">
             <li class="box" id="b801">Brook</li>
             <li class="box" id="b802">Bknight</li>
@@ -23,6 +52,7 @@
             <li class="box" id="b807">Bknight</li>
             <li class="box" id="b808">Brook</li>
         </div>
+
         <div class="divv" id="row7">
             <li class="box" id="b701">Bpawn</li>
             <li class="box" id="b702">Bpawn</li>
@@ -33,7 +63,6 @@
             <li class="box" id="b707">Bpawn</li>
             <li class="box" id="b708">Bpawn</li>
         </div>
-
 
         <!-- Blank Spaces -->
         <div class="divv" id="row6">
@@ -46,6 +75,7 @@
             <li class="box" id="b607"></li>
             <li class="box" id="b608"></li>
         </div>
+
         <div class="divv" id="row5">
             <li class="box" id="b501"></li>
             <li class="box" id="b502"></li>
@@ -56,6 +86,7 @@
             <li class="box" id="b507"></li>
             <li class="box" id="b508"></li>
         </div>
+
         <div class="divv" id="row4">
             <li class="box" id="b401"></li>
             <li class="box" id="b402"></li>
@@ -66,6 +97,7 @@
             <li class="box" id="b407"></li>
             <li class="box" id="b408"></li>
         </div>
+
         <div class="divv" id="row3">
             <li class="box" id="b301"></li>
             <li class="box" id="b302"></li>
@@ -88,6 +120,7 @@
             <li class="box Wpawn" id="b207">Wpawn</li>
             <li class="box Wpawn" id="b208">Wpawn</li>
         </div>
+
         <div class="divv" id="row1">
             <li class="box" id="b101">Wrook</li>
             <li class="box" id="b102">Wknight</li>
@@ -99,6 +132,12 @@
             <li class="box" id="b108">Wrook</li>
         </div>
     </ul>
+
+    <script>
+        function restartGame() {
+            location.reload();
+        }
+    </script>
 
     <script src="Chess.js"></script>
 </body>
