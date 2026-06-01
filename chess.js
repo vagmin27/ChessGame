@@ -84,7 +84,9 @@ function insertImage() {
         image.innerHTML = ''; // Clear previous content
         if (piece) {
             const pieceName = piece.toLowerCase();
-            const imageUrl = `${pieceName}.png`;
+            // Capitalize the first letter (e.g., 'brook' -> 'Brook.png', 'wpawn' -> 'Wpawn.png')
+            // to match case-sensitive files on Linux-based environments like Vercel.
+            const imageUrl = pieceName.charAt(0).toUpperCase() + pieceName.slice(1) + '.png';
             console.log(`[Diagnostic] Generating image URL: "${imageUrl}" for piece: "${piece}"`);
 
             if (pieceName.endsWith('pawn')) {
@@ -577,5 +579,7 @@ document.querySelector('ul').addEventListener('click', function (e) {
 });
 
 // Initialize Board on Page Load
-renderBoard();
-coloring();
+document.addEventListener('DOMContentLoaded', () => {
+    renderBoard();
+    coloring();
+});
